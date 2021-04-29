@@ -77,6 +77,10 @@
 				      <th>Stock</th>				      
 				    </tr>
 				    </thead>
+				    <tr th:if="${productos.empty}">
+            		<td colspan="2"> No hay productos en el listado </td>
+        		</tr>
+        		
 					<tr th:each="p : ${productos}">
 						<td th:text="${p.codProducto}"></td>
 						<td th:text="${p.nombre}"></td>
@@ -86,6 +90,7 @@
 					</tr>
 				</table>
 			</div>
+			
 		</div>
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>

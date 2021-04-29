@@ -11,8 +11,9 @@
 </head>
 
 <body>
-<div th:insert="layouts/header :: header"></div>
+
 	<div class="container">
+	<div th:insert="layouts/header :: header"></div>	
 
 		
 
@@ -114,8 +115,8 @@
 					<th>Edad</th>
 					<!-- <th>otraFecha</th>-->
 
-					<th>Cod</th>
-					<th>Telefono</th>
+					<!--<th>Cod</th>-->
+					<!--<th>Telefono</th>-->
 					<th>Email</th>
 					<th>Cod - Telefono</th>
 					<th>fechaUlt</th>
@@ -126,6 +127,9 @@
 
 				</tr>
 				</thead>
+				<tr th:if="${clientes.empty}">
+            		<td colspan="2"> No hay clientes en el listado </td>
+        		</tr>
 				<tr th:each="cli : ${clientes}">
 					<td th:text="${cli.tipoDocumento}"></td>
 					<td th:text="${cli.nroDocumento}"></td>
@@ -136,8 +140,8 @@
 						th:text="${#temporals.format(cli.fechaNacimiento,'dd/MM/yyyy')}"></td>
 					<td th:text="${cli.edad}"></td>
 
-					<td th:text="${cli.codigoAreaTelefono}"></td>
-					<td th:text="${cli.numTelefono}"></td>
+					<!--<td th:text="${cli.codigoAreaTelefono}"></td>-->
+					<!--<td th:text="${cli.numTelefono}"></td>-->
 					<td th:text="${cli.email}"></td>
 					<td th:text="${cli.codigoAreaTelefono}+' - ' +${cli.numTelefono}"></td>
 					<td
@@ -148,7 +152,10 @@
 				</tr>
 			</table>
 		</div>
+		<div th:insert="layouts/footer :: footer"></div>
 	</div>
+	
+	
 
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
@@ -157,7 +164,7 @@
 	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
 		type="text/javascript"
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<div th:insert="layouts/footer :: footer"></div>
+	
 
 
 </body>

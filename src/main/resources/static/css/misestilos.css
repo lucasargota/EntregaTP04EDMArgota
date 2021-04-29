@@ -3,9 +3,28 @@
 	background:  teal;
 	padding: 8px 16px 8px 16px;
 	text-align: center;
+	
 }
 
+body {
+	margin: 0;
+		 padding: 0;
+		 color: #fff;
+		 background:url(../img/download.jpg) no-repeat center top;
+		 background-size: cover;
+  		font-family: sans-serif;
+  		height: 100vh;
+	
+}
 
+.body-home{
+		 margin: 0;
+		 padding: 0;
+		 background:url(../img/japan-tokyo-cityscapes-city-photography-bokeh-out-of-focus-3840x2400-abstract-photography-hd-art-wallpaper-preview.jpg) no-repeat center top;
+		 background-size: cover;
+  		font-family: sans-serif;
+  		height: 100vh;	
+}
 .login-box {
   width: 320px;
   height: 420px;
