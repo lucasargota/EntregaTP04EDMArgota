@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+Producto Guardado Satisfactoriamente
+
+<h1>Menú</h1>
+	<ul>
+		<li><a href="ultimo">Mostrar Último</a></li>
+		<li>Mostrar Todos</li>
+		<li>Buscar Producto por Nombre</li>
+		<li>Buscar Producto por Código</li>
+		<li><a href="volver">Volver</a></li>
+	</ul>
+
+<h3>Lista de Productos</h3><br>
+			<div>
+				<table>
+				    <tr>
+				      <th>Cod Producto</th>
+				      <th>Nombre</th>
+				      <th>Precio</th>
+				      <th>Marca</th>
+				      <th>Stock</th>				      
+				    </tr>
+					<tr th:each="p : ${productos}">
+						<td th:text="${p.codProducto}"></td>
+						<td th:text="${p.nombre}"></td>
+						<td th:text="${p.precio}"></td>
+						<td th:text="${p.marca}"></td>
+						<td th:text="${p.stock}"></td>						
+					</tr>
+				</table>
+			</div>
+</body>
+</html>

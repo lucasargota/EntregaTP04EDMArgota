@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Formulario que muestra el Último Producto</h1>
+	<form id="formUltimoProducto" th:object="${ultimoProducto}">
+		
+			<label for="codigo">Codigo</label> 
+			<input type="text"	id="codigo" th:field="*{codProducto}">
+		<br>
+		
+			<label for="nombre">Nombre</label> 
+			<input type="text"	id="nombre" th:field="*{nombre}">
+		<br>
+		
+			<label for="precio">Precio</label> 
+			<input type="number" id="precio" th:field="*{precio}">
+		<br>
+		
+			<label for="marca">Marca</label> 
+			<input type="text" id="marca" th:field="*{marca}">		
+		<br>
+		
+			<label for="stock">Stock</label> 
+			<input type="number" id="stock" th:field="*{stock}">
+		<br>
+		<li><a href="volver">Volver</a></li>
+		
+
+	</form>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link th:rel="stylesheet" type="text/css"	th:href="@{/css/misestilos.css}" />
+<link th:rel="stylesheet" type="text/css"	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+<meta charset="UTF-8">
+
+<title>Home</title>
+
+</head>
+
+<body>
+<header>
+<div th:insert= "layouts/header :: header"></div>
+</header>
+
+ <br>
+	
+<div class="container">
+<div class="row align-items-center">
+    <div class="col">
+      
+    </div>
+    <div class="col">
+      
+    </div>
+    <div class="col">     
+    
+    
+<div class="login-box">
+	
+<form> 
+<h1>Login </h1>
+   <!-- USERNAME -->
+        
+  <div class="form-group row">
+  
+        <label for="username"class="col-sm-2 col-form-label">Username</label> <br>
+       
+      
+        
+        <input type="text" placeholder="Enter Username"class="form-control">
+        
+		   </div>
+		   
+		   
+		      <!-- PASSWORD  -->  
+		    <div class="form-group row">
+        <label for="password"class="col-sm-2 col-form-label">Password</label> <br>
+       
+           
+        <input type="password" placeholder="Enter Password"class="form-control">
+        
+		   </div> 
+		   
+		     <div class="d-grid gap-2">
+        <input type="button" class="btn btn-primary" value="Log In" >
+        </div>
+        
+        <a href="#">Lost your Password?</a><br>
+        <a href="#">Don't have An account?</a>
+
+
+</form>                         		   		   	        
+     </div>
+     <br>
+	
+ 
+     
+
+	</div>
+	</div>
+  </div>
+	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"	type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"	type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"type="text/javascript"	src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<footer>
+	<div th:insert="layouts/footer :: footer"></div>
+	</footer>
+	
+</body>
+
+</html>
