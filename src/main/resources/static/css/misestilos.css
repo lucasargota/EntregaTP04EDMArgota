@@ -10,7 +10,7 @@ body {
 	margin: 0;
 		 padding: 0;
 		 color: #fff;
-		 background:url(../img/download.jpg) no-repeat center top;
+		 background:url(../img/download.jpg) ;
 		 background-size: cover;
   		font-family: sans-serif;
   		height: 100vh;
@@ -22,7 +22,8 @@ body {
 		 padding: 0;
 		 background:url(../img/japan-tokyo-cityscapes-city-photography-bokeh-out-of-focus-3840x2400-abstract-photography-hd-art-wallpaper-preview.jpg) no-repeat center top;
 		 background-size: cover;
-  		font-family: sans-serif;
+  		 font-family: sans-serif;
+  		
   		height: 100vh;	
 }
 .login-box {
@@ -34,3 +35,14 @@ body {
   left: 50%;  
   padding: 70px 30px;
 }
+
+.columna {
+	position: sticky;
+	left: 0;
+	background: teal; 
+	 color: #fff;
+	
+	
+}
+
+

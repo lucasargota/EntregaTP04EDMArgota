@@ -11,10 +11,11 @@
 <body>
 	<div class="container">
 	<div th:insert="layouts/header :: header"></div>
-
+	
 	<h1>Formulario de Carga de Producto</h1>
 	
-	<form id="formProducto" th:object="${unProducto}" th:action="@{/producto/guardar}" method="post">
+	
+	<form id="formProducto" th:object="${unProducto}" th:action="${editMode}?@{/producto/modificar}:@{/producto/guardar}" method="post">
 		<div class="form-group row">
 			<label for="codigo"class="col-sm-2 col-form-label">Codigo</label> 
 			<div class="col-sm-10">
@@ -57,7 +58,9 @@
 
 		
 	<div class="d-grid gap-2">
-				<button  class="btn btn-primary" type="submit"  value="Agregar">Agregar</button>
+				
+				<!-- <button  class="btn btn-primary" type="submit"  value="Agregar">Agregar</button> -->
+				<input type="submit" class="btn btn-success btn-block"  th:value="${editMode}?'Modificar Producto':'Crear Producto'">
 			</div>
 	
 
@@ -66,29 +69,33 @@
 		<!-- ---------------------------------------------------------------- -->
 		<h3>Lista de Productos</h3><br>
 	<div>
-				<table class="table">
+				<table class="table table-success table-striped">
 			<thead class="thead-dark">
 
 				    <tr>
-				      <th>Cod Producto</th>
+				    <th class="columna" >Cod Producto</th>				      
 				      <th>Nombre</th>
 				      <th>Precio</th>
 				      <th>Marca</th>
-				      <th>Stock</th>				      
+				      <th>Stock</th>	
+				      <th>Edicion </th>			      
 				    </tr>
 				    </thead>
 				    <tr th:if="${productos.empty}">
             		<td colspan="2"> No hay productos en el listado </td>
-        		</tr>
+        			</tr>
         		
-					<tr th:each="p : ${productos}">
-						<td th:text="${p.codProducto}"></td>
+					<tr th:each="p : ${productos}">	
+						<td class="columna" th:text="${p.codProducto}"> </td>
 						<td th:text="${p.nombre}"></td>
 						<td th:text="${p.precio}"></td>
 						<td th:text="${p.marca}"></td>
-						<td th:text="${p.stock}"></td>						
+						<td th:text="${p.stock}"></td>	
+						<td><a href="#" th:href="@{'/producto/editar/'+${p.codProducto}}">
+									<i class="fa fa-edit"></i></a>					
 					</tr>
 				</table>
+				
 			</div>
 			
 		</div>

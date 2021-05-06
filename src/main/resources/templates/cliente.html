@@ -20,7 +20,7 @@
 
 		<h1>Formulario de Carga de Cliente</h1>
 
-		<form id="formProducto" th:object="${unCliente}" th:action="@{/cliente/guardar}" method="post">
+		<form id="formProducto" th:object="${unCliente}"th:action="${editMode}?@{/cliente/modificar}:@{/cliente/guardar}" method="post">
 		
 			<div class="form-group row">
 				<label for="tipo" class="col-sm-2 col-form-label">Tipo de documento</label>
@@ -94,9 +94,10 @@
 
 
 			<div class="d-grid gap-2">
-				<button  class="btn btn-primary" type="submit"  value="Agregar">Agregar</button>
+				<!-- <button  class="btn btn-primary" type="submit"  value="Agregar">Agregar</button> -->
+			
+			<input type="submit" class="btn btn-success btn-block"  th:value="${editMode}?'Modificar Cliente':'Crear Cliente'">
 			</div>
-
 		</form>
 
 		<!-- ---------------------------------------------------------------- -->
@@ -104,11 +105,12 @@
 		<h3>Lista de Clientes</h3>
 		<br>
 		<div>
-			<table class="table">
+			<table class="table table-success table-striped">
 			<thead class="thead-dark">
 				<tr>
+					
+					<th class="columna" >Num Doc</th>
 					<th>Tipo</th>
-					<th>Num Doc</th>
 					<th>Nombre y Apellido</th>
 					<th>Contraseña</th>
 					<th>Fecha</th>
@@ -122,6 +124,7 @@
 					<th>fechaUlt</th>
 					<th>Tiempo Transcurrido</th>
 					<th>Datos adicionales</th>
+					<th>Edicion </th>
 
 
 
@@ -131,8 +134,9 @@
             		<td colspan="2"> No hay clientes en el listado </td>
         		</tr>
 				<tr th:each="cli : ${clientes}">
-					<td th:text="${cli.tipoDocumento}"></td>
-					<td th:text="${cli.nroDocumento}"></td>
+				<td class="columna" th:text="${cli.nroDocumento}"></td>
+					<td  th:text="${cli.tipoDocumento}"></td>
+					
 					<td th:text="${cli.nYa}"></td>
 					<td th:text="${cli.Password}"></td>
 					<!--<td th:text="${cli.fechaNacimiento}"></td>-->
@@ -148,10 +152,14 @@
 						th:text="${#temporals.format(cli.fechaUltimaCompra,'dd/MM/yyyy')}"></td>
 					<td th:text="${cli.tiempoUltCompra}"></td>
 					<td th:text="${cli.datosAdicionales}"></td>
+					
+					<td><a href="#" th:href="@{'/cliente/editar/'+${cli.nroDocumento}}">
+									<i class="fa fa-edit"></i></a>
 
 				</tr>
 			</table>
 		</div>
+		<br>
 		<div th:insert="layouts/footer :: footer"></div>
 	</div>
 	
