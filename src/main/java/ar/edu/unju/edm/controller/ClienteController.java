@@ -91,6 +91,27 @@ public class ClienteController {
 		
 	}
 	
+	@GetMapping("/cliente/eliminarCliente/{id}")
+	public String eliminarCliente(Model model, @PathVariable(name="id") int id) {		
+		try {			
+			clienteService.eliminarCliente(id);			
+		}
+		catch(Exception e){
+			model.addAttribute("listErrorMessage",e.getMessage());
+		}			
+		return "redirect:/cliente/mostrar";
+	}
+	
+	
+//	@GetMapping("/cliente/eliminarCliente/{id}")
+//	public String eliminarCliente(Model model, @PathVariable(name="id") int id) {		
+//		try {		clienteService.eliminarCliente(id);			
+//		}
+//		catch(Exception e){
+//			model.addAttribute("listErrorMessage",e.getMessage());
+//		}			
+//		return "redirect:/cliente/mostrar";
+//	}
 	
 	
 	

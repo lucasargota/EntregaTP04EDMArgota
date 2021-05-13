@@ -110,8 +110,13 @@ public class ProductoServiceImp implements ProductoService{
 
 
 	@Override
-	public void eliminarProducto(Producto productoAEliminar) {
+	public void eliminarProducto(int id) {
 		// TODO Auto-generated method stub
+		for (int i = 0; i < listadoProductos.size(); i++){
+		    if (listadoProductos.get(i).getCodProducto() == id ) {
+		    	listadoProductos.remove(i);
+		    
+		    }    }
 		
 	}
 
