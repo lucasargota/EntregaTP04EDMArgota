@@ -2,9 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<link th:rel="stylesheet" type="text/css"	th:href="@{/css/misestilos.css}" />
-<link th:rel="stylesheet" type="text/css"	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
-<link th:rel="stylesheet"	th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{/css/misestilos.css}" />
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+<link th:rel="stylesheet"
+	th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
 <meta charset="UTF-8">
 
 <title>Cliente</title>
@@ -13,17 +16,20 @@
 <body>
 
 	<div class="container">
-	<div th:insert="layouts/header :: header"></div>	
+		<div th:insert="layouts/header :: header"></div>
 
-		
+
 
 
 		<h1>Formulario de Carga de Cliente</h1>
 
-		<form id="formProducto" th:object="${unCliente}"th:action="${editMode}?@{/cliente/modificar}:@{/cliente/guardar}" method="post">
-		
+		<form id="formProducto" th:object="${unCliente}"
+			th:action="${editMode}?@{/cliente/modificar}:@{/cliente/guardar}"
+			method="post">
+
 			<div class="form-group row">
-				<label for="tipo" class="col-sm-2 col-form-label">Tipo de documento</label>
+				<label for="tipo" class="col-sm-2 col-form-label">Tipo de
+					documento</label>
 				<div class="col-sm-10">
 					<select id="tipo" th:field="*{tipoDocumento}" class="form-control">
 						<option value="DNI">DNI</option>
@@ -33,70 +39,81 @@
 				</div>
 			</div>
 
-				<div class="form-group row">
-			<label for="numdoc"class="col-sm-2 col-form-label">Documento</label>
-			<div class="col-sm-10">
-				<input type="number"id="numdoc" th:field="*{nroDocumento}"class="form-control">
-		   </div>
-		   </div>
-		   
-		   
-		    <div class="form-group row">
-		    <label for="nya" class="col-sm-2 col-form-label ">Nombre y Apellido</label>
-		    <div class="col-sm-10">
-		    	<input type="text" id="nya"th:field="*{nYa}" class="form-control">
-		    </div>
-		   </div>
-		   
-		   		   <div class="form-group row">     
-		   <label for="password"class="col-sm-2 col-form-label ">Contraseña</label>
-		   <div class="col-sm-10">
-				<input type="password" id="password" th:field="*{password}"class="form-control">
-				 </div>
-		   </div>
-		   
-			 <div class="form-group row">
-			<label for="fechanac"class="col-sm-2 col-form-label ">Nacimiento</label> 
-			<div class="col-sm-10">
-				<input type="date" id="fechanac" th:field="*{fechaNacimiento}"class="form-control">
-			 </div>
-		   </div>
-		 
-		  <div class="form-group row">
-		  	<label for="codigo"class="col-sm-2 col-form-label ">Cod Area</label>
-		  	<div class="col-sm-10">
-		  		 <input type="number" id="codigo"	th:field="*{codigoAreaTelefono}"class="form-control"> 
-		  		 </div>
-		   </div>
-		   
-		   <div class="form-group row">
-		  <label for="numtel"class="col-sm-2 col-form-label ">Telefono</label>
-		  <div class="col-sm-10">
-		 		 <input type="number" id="numtel"	th:field="*{numTelefono}"class="form-control">
-		 		  </div>
-		   </div>
-		   
-		     <div class="form-group row">
-		    <label for="email"class="col-sm-2 col-form-label ">Email</label>	
-		    <div class="col-sm-10">	    
-				<input type="email" id="email" th:field="*{email}"class="form-control"> 
-				 </div>
-		   </div>
-		   
-		   
-			 <div class="form-group row">
-			<label for="fechault"class="col-sm-2 col-form-label ">Ultima Compra</label>
-			<div class="col-sm-10">	 
-				<input type="date"id="fechault" th:field="*{fechaUltimaCompra}"class="form-control">
-				 </div>
-		   </div>
-			 
+			<div class="form-group row">
+				<label for="numdoc" class="col-sm-2 col-form-label">Documento</label>
+				<div class="col-sm-10">
+					<input type="number" id="numdoc" th:field="*{nroDocumento}"
+						class="form-control">
+				</div>
+			</div>
+
+
+			<div class="form-group row">
+				<label for="nya" class="col-sm-2 col-form-label ">Nombre y
+					Apellido</label>
+				<div class="col-sm-10">
+					<input type="text" id="nya" th:field="*{nYa}" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="password" class="col-sm-2 col-form-label ">Contraseña</label>
+				<div class="col-sm-10">
+					<input type="password" id="password" th:field="*{password}"
+						class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="fechanac" class="col-sm-2 col-form-label ">Nacimiento</label>
+				<div class="col-sm-10">
+					<input type="date" id="fechanac" th:field="*{fechaNacimiento}"
+						class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="codigo" class="col-sm-2 col-form-label ">Cod
+					Area</label>
+				<div class="col-sm-10">
+					<input type="number" id="codigo" th:field="*{codigoAreaTelefono}"
+						class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="numtel" class="col-sm-2 col-form-label ">Telefono</label>
+				<div class="col-sm-10">
+					<input type="number" id="numtel" th:field="*{numTelefono}"
+						class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="email" class="col-sm-2 col-form-label ">Email</label>
+				<div class="col-sm-10">
+					<input type="email" id="email" th:field="*{email}"
+						class="form-control">
+				</div>
+			</div>
+
+
+			<div class="form-group row">
+				<label for="fechault" class="col-sm-2 col-form-label ">Ultima
+					Compra</label>
+				<div class="col-sm-10">
+					<input type="date" id="fechault" th:field="*{fechaUltimaCompra}"
+						class="form-control">
+				</div>
+			</div>
+
 
 
 			<div class="d-grid gap-2">
 				<!-- <button  class="btn btn-primary" type="submit"  value="Agregar">Agregar</button> -->
-			
-			<input type="submit" class="btn btn-success btn-block"  th:value="${editMode}?'Modificar Cliente':'Crear Cliente'">
+
+				<input type="submit" class="btn btn-success btn-block"
+					th:value="${editMode}?'Modificar Cliente':'Crear Cliente'">
 			</div>
 		</form>
 
@@ -106,37 +123,37 @@
 		<br>
 		<div>
 			<table class="table table-success table-striped">
-			<thead class="thead-dark">
-				<tr>
-					
-					<th class="columna" >Num Doc</th>
-					<th>Tipo</th>
-					<th>Nombre y Apellido</th>
-					<th>Contraseña</th>
-					<th>Fecha</th>
-					<th>Edad</th>
-					<!-- <th>otraFecha</th>-->
+				<thead class="thead-dark">
+					<tr>
 
-					<!--<th>Cod</th>-->
-					<!--<th>Telefono</th>-->
-					<th>Email</th>
-					<th>Cod - Telefono</th>
-					<th>fechaUlt</th>
-					<th>Tiempo Transcurrido</th>
-					<th>Datos adicionales</th>
-					<th>Edicion </th>
+						<th class="columna">Num Doc</th>
+						<th>Tipo</th>
+						<th>Nombre y Apellido</th>
+						<th>Contraseña</th>
+						<th>Fecha</th>
+						<th>Edad</th>
+						<!-- <th>otraFecha</th>-->
+
+						<!--<th>Cod</th>-->
+						<!--<th>Telefono</th>-->
+						<th>Email</th>
+						<th>Cod - Telefono</th>
+						<th>fechaUlt</th>
+						<th>Tiempo Transcurrido</th>
+						<th>Datos adicionales</th>
+						<th>Edicion</th>
 
 
 
-				</tr>
+					</tr>
 				</thead>
 				<tr th:if="${clientes.empty}">
-            		<td colspan="2"> No hay clientes en el listado </td>
-        		</tr>
+					<td colspan="2">No hay clientes en el listado</td>
+				</tr>
 				<tr th:each="cli : ${clientes}">
-				<td class="columna" th:text="${cli.nroDocumento}"></td>
-					<td  th:text="${cli.tipoDocumento}"></td>
-					
+					<td class="columna" th:text="${cli.nroDocumento}"></td>
+					<td th:text="${cli.tipoDocumento}"></td>
+
 					<td th:text="${cli.nYa}"></td>
 					<td th:text="${cli.Password}"></td>
 					<!--<td th:text="${cli.fechaNacimiento}"></td>-->
@@ -152,18 +169,57 @@
 						th:text="${#temporals.format(cli.fechaUltimaCompra,'dd/MM/yyyy')}"></td>
 					<td th:text="${cli.tiempoUltCompra}"></td>
 					<td th:text="${cli.datosAdicionales}"></td>
-					
-					<td><a href="#" th:href="@{'/cliente/editar/'+${cli.nroDocumento}}">
-									<i class="fa fa-edit"></i></a>
 
+					<td><a href="#"
+						th:href="@{'/cliente/editar/'+${cli.nroDocumento}}"><i
+							class="fa fa-edit"></i></a> <a
+						th:onclick="'javascript:confirmarEliminar(\''+${cli.nroDocumento}+'\');'"><i
+							class="fa fa-trash-alt"></i></a>
 				</tr>
 			</table>
 		</div>
 		<br>
 		<div th:insert="layouts/footer :: footer"></div>
 	</div>
-	
-	
+	<!--Modal Eliminar-->
+
+	<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog"
+		aria-labelledby="eliminarModal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="eliminarModalTitulo">Confirmar
+						Eliminar</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h6>Are you sure you want to delete this user?</h6>
+				</div>
+				<input type="hidden" id="identificadorUsuario" name="userId" />
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary"
+						th:onclick="eliminarUsuario()">Delete User</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function confirmarEliminar(id) {
+			$('#modalEliminar').modal('show');
+			$("#identificadorUsuario").val(id);
+		}
+
+		function eliminarUsuario() {
+			var id = $("#identificadorUsuario").val();
+			window.location = "eliminarCliente/" + id;
+		}
+	</script>
 
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
@@ -172,7 +228,7 @@
 	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
 		type="text/javascript"
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	
+
 
 
 </body>

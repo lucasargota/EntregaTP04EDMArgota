@@ -85,6 +85,17 @@ public class ProductoController {
 		
 	}
 	
+	@GetMapping("/producto/eliminarProducto/{id}")
+	public String eliminarProducto(Model model, @PathVariable(name="id") int id) {		
+		try {			
+			iProductoService.eliminarProducto(id);			
+		}
+		catch(Exception e){
+			model.addAttribute("listErrorMessage",e.getMessage());
+		}			
+		return "redirect:/producto/mostrar";
+	}
+	
 	//@GetMapping("/ultimo")
 	//public String cargarUltimoProducto(Model model) {
 	//	model.addAttribute("ultimoProducto", iProductoService.obtenerUltimoProducto());
