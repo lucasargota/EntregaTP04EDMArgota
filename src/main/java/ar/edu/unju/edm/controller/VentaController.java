@@ -13,7 +13,7 @@ public class VentaController {
 	
 
 	@Autowired
-	@Qualifier("unaImp")
+	@Qualifier("implementacionMYSQL")
 	ProductoService iProductoService;
 	
 	@GetMapping("/producto/ventas")

@@ -23,10 +23,9 @@
 
 		<h1>Formulario de Carga de Cliente</h1>
 
-		<form id="formProducto" th:object="${unCliente}"
-			th:action="${editMode}?@{/cliente/modificar}:@{/cliente/guardar}"
-			method="post">
-
+		<form id="formProducto" th:object="${unCliente}"th:action="${editMode}?@{/cliente/modificar}:@{/cliente/guardar}"method="post">
+		<input type="hidden" th:field="*{idCliente}" th:if="${editMode}" >
+			
 			<div class="form-group row">
 				<label for="tipo" class="col-sm-2 col-form-label">Tipo de
 					documento</label>
@@ -38,149 +37,147 @@
 					</select>
 				</div>
 			</div>
-
+			
 			<div class="form-group row">
 				<label for="numdoc" class="col-sm-2 col-form-label">Documento</label>
 				<div class="col-sm-10">
 					<input type="number" id="numdoc" th:field="*{nroDocumento}"
 						class="form-control">
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nroDocumento')}" th:errors="*{nroDocumento}" >Document Error </div>
 				</div>
 			</div>
-
-
 			<div class="form-group row">
-				<label for="nya" class="col-sm-2 col-form-label ">Nombre y
-					Apellido</label>
+				<label for="nya" class="col-sm-2 col-form-label ">Nombre y Apellido</label>
 				<div class="col-sm-10">
-					<input type="text" id="nya" th:field="*{nYa}" class="form-control">
+					<input type="text" id="nya" th:field="*{nYa}" 
+					class="form-control">
+					<div class="alert alert-danger" th:if="${#fields.hasErrors('nYa')}" th:errors="*{nYa}" >Name Error </div>
+					
 				</div>
 			</div>
-
-			<div class="form-group row">
-				<label for="password" class="col-sm-2 col-form-label ">Contraseña</label>
-				<div class="col-sm-10">
-					<input type="password" id="password" th:field="*{password}"
-						class="form-control">
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label for="fechanac" class="col-sm-2 col-form-label ">Nacimiento</label>
-				<div class="col-sm-10">
-					<input type="date" id="fechanac" th:field="*{fechaNacimiento}"
-						class="form-control">
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label for="codigo" class="col-sm-2 col-form-label ">Cod
-					Area</label>
-				<div class="col-sm-10">
-					<input type="number" id="codigo" th:field="*{codigoAreaTelefono}"
-						class="form-control">
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label for="numtel" class="col-sm-2 col-form-label ">Telefono</label>
-				<div class="col-sm-10">
-					<input type="number" id="numtel" th:field="*{numTelefono}"
-						class="form-control">
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<label for="email" class="col-sm-2 col-form-label ">Email</label>
-				<div class="col-sm-10">
-					<input type="email" id="email" th:field="*{email}"
-						class="form-control">
-				</div>
-			</div>
-
-
-			<div class="form-group row">
-				<label for="fechault" class="col-sm-2 col-form-label ">Ultima
-					Compra</label>
-				<div class="col-sm-10">
-					<input type="date" id="fechault" th:field="*{fechaUltimaCompra}"
-						class="form-control">
-				</div>
-			</div>
-
-
-
-			<div class="d-grid gap-2">
-				<!-- <button  class="btn btn-primary" type="submit"  value="Agregar">Agregar</button> -->
-
-				<input type="submit" class="btn btn-success btn-block"
-					th:value="${editMode}?'Modificar Cliente':'Crear Cliente'">
-			</div>
-		</form>
-
-		<!-- ---------------------------------------------------------------- -->
-
-		<h3>Lista de Clientes</h3>
-		<br>
-		<div>
-			<table class="table table-success table-striped">
-				<thead class="thead-dark">
-					<tr>
-
-						<th class="columna">Num Doc</th>
-						<th>Tipo</th>
-						<th>Nombre y Apellido</th>
-						<th>Contraseña</th>
-						<th>Fecha</th>
-						<th>Edad</th>
-						<!-- <th>otraFecha</th>-->
-
-						<!--<th>Cod</th>-->
-						<!--<th>Telefono</th>-->
-						<th>Email</th>
-						<th>Cod - Telefono</th>
-						<th>fechaUlt</th>
-						<th>Tiempo Transcurrido</th>
-						<th>Datos adicionales</th>
-						<th>Edicion</th>
-
-
-
-					</tr>
-				</thead>
-				<tr th:if="${clientes.empty}">
-					<td colspan="2">No hay clientes en el listado</td>
-				</tr>
-				<tr th:each="cli : ${clientes}">
-					<td class="columna" th:text="${cli.nroDocumento}"></td>
-					<td th:text="${cli.tipoDocumento}"></td>
-
-					<td th:text="${cli.nYa}"></td>
-					<td th:text="${cli.Password}"></td>
-					<!--<td th:text="${cli.fechaNacimiento}"></td>-->
-					<td
-						th:text="${#temporals.format(cli.fechaNacimiento,'dd/MM/yyyy')}"></td>
-					<td th:text="${cli.edad}"></td>
-
-					<!--<td th:text="${cli.codigoAreaTelefono}"></td>-->
-					<!--<td th:text="${cli.numTelefono}"></td>-->
-					<td th:text="${cli.email}"></td>
-					<td th:text="${cli.codigoAreaTelefono}+' - ' +${cli.numTelefono}"></td>
-					<td
-						th:text="${#temporals.format(cli.fechaUltimaCompra,'dd/MM/yyyy')}"></td>
-					<td th:text="${cli.tiempoUltCompra}"></td>
-					<td th:text="${cli.datosAdicionales}"></td>
-
-					<td><a href="#"
-						th:href="@{'/cliente/editar/'+${cli.nroDocumento}}"><i
-							class="fa fa-edit"></i></a> <a
-						th:onclick="'javascript:confirmarEliminar(\''+${cli.nroDocumento}+'\');'"><i
-							class="fa fa-trash-alt"></i></a>
-				</tr>
-			</table>
+	
+	<div class="form-group row">
+		<label for="password" class="col-sm-2 col-form-label ">Contraseña</label>
+		<div class="col-sm-10">
+			<input type="password" id="password"th:field="*{password}"
+				class="form-control">
+				<div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" >password Error </div>
 		</div>
-		<br>
-		<div th:insert="layouts/footer :: footer"></div>
 	</div>
+	
+	<div class="form-group row">
+		<label for="fechanac" class="col-sm-2 col-form-label ">Nacimiento</label>
+		<div class="col-sm-10">
+			<input type="date" id="fechanac" th:field="*{fechaNacimiento}"
+				class="form-control">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="codigo" class="col-sm-2 col-form-label ">Cod Area</label>
+		<div class="col-sm-10">
+			<input type="number" id="codigo" th:field="*{codigoAreaTelefono}"
+				class="form-control">
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label for="numtel" class="col-sm-2 col-form-label ">Telefono</label>
+		<div class="col-sm-10">
+			<input type="number" id="numtel" th:field="*{numTelefono}"
+				class="form-control">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="email" class="col-sm-2 col-form-label ">Email</label>
+		<div class="col-sm-10">
+			<input type="email" id="email" th:field="*{email}"
+				class="form-control">
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="fechault" class="col-sm-2 col-form-label ">Ultima
+			Compra</label>
+		<div class="col-sm-10">
+			<input type="date" id="fechault" th:field="*{fechaUltimaCompra}"
+				class="form-control">
+		</div>
+	</div>
+	<div>
+				<div class="form-group row">
+					<div class="col-sm-6">
+						<input type="submit" class="btn btn-success btn-block"
+							th:value="${editMode}?'Modificar Cliente':'Crear Cliente'">
+					</div>
+					<div class="col-sm-6">
+						<a class="btn btn-secondary btn-block" th:href="@{'/cancelar'}">Cancelar</a>
+					</div>
+				</div>
+
+			</div>
+	</form>
+	<!-- ---------------------------------------------------------------- -->
+
+	<h3>Lista de Clientes</h3>
+	<br>
+	<div>
+		<table class="table table-success table-striped">
+			<thead class="thead-dark">
+				<tr>
+
+					<th class="columna">Num Doc</th>
+					<th>Tipo</th>
+					<th>Nombre y Apellido</th>
+					<th>Contraseña</th>
+					<th>Fecha</th>
+					<th>Edad</th>
+					<!-- <th>otraFecha</th>-->
+
+					<!--<th>Cod</th>-->
+					<!--<th>Telefono</th>-->
+					<th>Email</th>
+					<th>Cod - Telefono</th>
+					<th>fechaUlt</th>
+					<th>Tiempo Transcurrido</th>
+					<th>Datos adicionales</th>
+					<th>Edicion</th>
+
+
+
+				</tr>
+			</thead>
+			<tr th:if="${clientes.empty}">
+				<td colspan="2">No hay clientes en el listado</td>
+			</tr>
+			<tr th:each="cli : ${clientes}">
+				<td class="columna" th:text="${cli.nroDocumento}"></td>
+				<td th:text="${cli.tipoDocumento}"></td>
+
+				<td th:text="${cli.nYa}"></td>
+				<td th:text="${cli.password}"></td>
+				<!--<td th:text="${cli.fechaNacimiento}"></td>-->
+				<td th:text="${#temporals.format(cli.fechaNacimiento,'dd/MM/yyyy')}"></td>
+				<td th:text="${cli.edad}"></td>
+
+				<!--<td th:text="${cli.codigoAreaTelefono}"></td>-->
+				<!--<td th:text="${cli.numTelefono}"></td>-->
+				<td th:text="${cli.email}"></td>
+				<td th:text="${cli.codigoAreaTelefono}+' - ' +${cli.numTelefono}"></td>
+				<td
+					th:text="${#temporals.format(cli.fechaUltimaCompra,'dd/MM/yyyy')}"></td>
+				<td th:text="${cli.tiempoUltCompra}"></td>
+				<td th:text="${cli.datosAdicionales}"></td>
+
+				<td><a href="#"
+					th:href="@{'/cliente/editar/'+${cli.nroDocumento}}"><i
+						class="fa fa-edit"></i></a> <a
+					th:onclick="'javascript:confirmarEliminar(\''+${cli.nroDocumento}+'\');'"><i
+						class="fa fa-trash-alt"></i></a>
+			</tr>
+		</table>
+	</div>
+	<br>
+	<div th:insert="layouts/footer :: footer"></div>
+
 	<!--Modal Eliminar-->
 
 	<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog"
@@ -230,6 +227,7 @@
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 
-
+</div>
+	
 </body>
 </html>

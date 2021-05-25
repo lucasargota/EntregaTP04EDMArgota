@@ -3,11 +3,15 @@ package ar.edu.unju.edm.model;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -19,9 +23,14 @@ public class Cliente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
-	private int nroDocumento;
 	
+	@Column 
+	private Integer idCliente;
+	
+	@Column
+	@Min(1000000)
+	@Max(999999999)
+	private int nroDocumento;
 	
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -41,11 +50,15 @@ public class Cliente {
 	
 	
 	@Column
-	private String password;
+	@NotBlank(message="La Contraseña no puede quedar en blanco")
+	private String password ;
+	
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaUltimaCompra;
 	@Column
+	@NotBlank(message="El Nombre no puede quedar en blanco")
+
 	private String nYa;
 	@Column
 	private int edad;
@@ -62,6 +75,14 @@ public class Cliente {
 	
 	
 	
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
+	}
+
 	public String getTiempoUltCompra() {
 		return tiempoUltCompra;
 	}
@@ -93,6 +114,10 @@ public class Cliente {
 	public void setnYa(String nYa) {
 		this.nYa = nYa;
 	}
+
+
+
+	
 
 	public String getPassword() {
 		return password;

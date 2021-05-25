@@ -15,7 +15,12 @@ import org.springframework.stereotype.Component;
 public class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	
 	@Column
+	private Integer idProducto;
+	@Column
+	
 	
 	private int codProducto;
 	@Column
