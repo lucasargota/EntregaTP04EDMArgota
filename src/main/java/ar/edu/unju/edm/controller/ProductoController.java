@@ -21,7 +21,7 @@ public class ProductoController {
 	
 	
 	@Autowired
-	@Qualifier("unaImp")
+	@Qualifier("implementacionMYSQL")
 	ProductoService iProductoService;
 	
 	@GetMapping("/producto/mostrar")
