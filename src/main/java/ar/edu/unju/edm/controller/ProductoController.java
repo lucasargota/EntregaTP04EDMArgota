@@ -32,17 +32,37 @@ public class ProductoController {
 	}
 
 	
+
 	@PostMapping("/producto/guardar")
 	public String guardarNuevoProducto(@ModelAttribute("unProducto") Producto nuevoProducto, Model model) {
-		iProductoService.guardarProducto(nuevoProducto);
-		System.out.println(iProductoService.obtenerTodosProductos().get(0).getMarca()); //linea de control para saber si se mando bien el producto 
+		
+		
+		try {
+			// verificando si el usuario ya estaba registrado
+			
+			if (iProductoService.encontrarUnProducto(nuevoProducto.getCodProducto()) != null) {
+				model.addAttribute("mensaje", "El codigo ya está registrado");
+				System.out.println("encuentra?");
+				model.addAttribute("unProducto", nuevoProducto);
+				return "redirect:/producto/mostrar";			}
+			
+			
+			
+		} catch (Exception e) {
+			iProductoService.guardarProducto(nuevoProducto);
+		}
+				
+		
+		
+		
+		
+		
+		
 		
 		
 		return "redirect:/producto/mostrar";
 		
 	}
-	
-	
 	
 	@GetMapping("/producto/editar/{codProducto}")
 	public String editarCliente(Model model, @PathVariable(name="codProducto") int cod) throws Exception {

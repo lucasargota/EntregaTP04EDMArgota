@@ -1,52 +1,66 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
 
-<link th:rel="stylesheet" type="text/css"
+<head>
+	<link th:rel="stylesheet" type="text/css"
 	th:href="@{/css/misestilos.css}" />
 <link th:rel="stylesheet" type="text/css"
 	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
 <link th:rel="stylesheet"
 	th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
-
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<title>Ventas</title>
+	
 </head>
 
-<body>
-<div class="container">
+<body class="body">
+	<div class="container">
 		<div th:insert="layouts/header :: header"></div>
-		
 		<div class="row col-md-12">
 			<div th:each="c : ${productos}">
 				<div class="col-md-4">
-					<div class="card" style="width: 15rem;">
-  						<img src="/img/images.png" class="card-img-top" alt="hola">
+					<div class="card" style="width: 18rem;">
+						<img src="https://i0.wp.com/esferacreativa.com/wp-content/uploads/2017/05/fichas-tecnicas-de-productos-ecommerce-Teresa-Alba-MadridNYC.png?fit=640%2C320&ssl=1" class="card-img-top" alt="hola">
 						<div class="card-body">
-							<h5 class="card-title" th:text="${'producto - ' + c.codProducto}">Id</h5>
-							<p class="card-text" th:text="${c.nombre}">Name</p>
-							<p class="card-text" th:text="${c.precio}">Price</p>
-							<a class="stretched-link btn btn-primary"><i class="fas fa-shopping-cart mr-2"></i> Buy</a>
+							<h5 class="card-title" th:text="${c.nombre}">Nombre</h5>
+							<p class="card-text" th:text="${'Cod. de producto - ' + c.codProducto}">Id</p>
+							<p class="card-text" th:text="${'Precio - ' + c.precio}">Precio</p>
+							<p class="card-text" th:text="${'Marca- ' + c.marca}">marca</p>
+							<a class="stretched-link btn btn-primary link-vender" th:href="@{'/producto/vender/'+${c.codProducto}}"><i
+									class="fas fa-shopping-cart mr-2"></i>Comprar</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		
+		<!--Modal Editar-->
+		<div class="modal fade" id="modalVender" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-dialog-centered" >
+				<div class="modal-content">
+				
+				</div>
+			</div>
+		</div>
+		
+		<div th:insert="layouts/footer :: footer"></div>
+	</div>
 
-
-
-
-</div>
-<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
+	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
 	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
 		type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
 	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
 		type="text/javascript"
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<div th:insert="layouts/footer :: footer"></div>
-
+		<script type="text/javascript">
+			$(document).ready(function() { $(".link-vender").on("click", function(event) {
+									event.preventDefault();
+									$("#modalVender").modal("show").find(".modal-content").load($(this).attr("href"));
+								});
+					});
+	</script>
 </body>
+
 </html>
